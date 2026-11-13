@@ -1,0 +1,30 @@
+VERSION ""
+
+NS_ :
+
+BS_:
+
+BU_: GUBENAV Logger
+
+BO_ 256 GUBENAV_Position: 8 GUBENAV
+ SG_ Latitude : 0|32@1- (0.0000001,0) [-90|90] "deg" Logger
+ SG_ Longitude : 32|32@1- (0.0000001,0) [-180|180] "deg" Logger
+
+BO_ 257 GUBENAV_Kinematics: 8 GUBENAV
+ SG_ Speed : 0|16@1+ (0.01,0) [0|655.35] "km/h" Logger
+ SG_ Heading : 16|16@1+ (0.01,0) [0|360] "deg" Logger
+ SG_ GPS_Valid : 32|8@1+ (1,0) [0|1] "" Logger
+
+BO_ 258 GUBENAV_Accelerometer: 8 GUBENAV
+ SG_ Acc_X : 0|16@1- (0.001,0) [-30|30] "g" Logger
+ SG_ Acc_Y : 16|16@1- (0.001,0) [-30|30] "g" Logger
+ SG_ Acc_Z : 32|16@1- (0.001,0) [-30|30] "g" Logger
+
+BO_ 259 GUBENAV_Gyroscope: 8 GUBENAV
+ SG_ Gyro_X : 0|16@1- (0.1,0) [-2000|2000] "deg/s" Logger
+ SG_ Gyro_Y : 16|16@1- (0.1,0) [-2000|2000] "deg/s" Logger
+ SG_ Gyro_Z : 32|16@1- (0.1,0) [-2000|2000] "deg/s" Logger
+
+CM_ BU_ GUBENAV "GUBENAV GPS 100 Hz and 6-axis IMU sensor, GUBENAV protocol (default CAN IDs 0x100-0x103)";
+CM_ SG_ 257 GPS_Valid "1 = valid GPS fix, 0 = GPS timeout (IMU only)";
+VAL_ 257 GPS_Valid 1 "FIX_OK" 0 "IMU_ONLY" ;
